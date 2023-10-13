@@ -1,12 +1,12 @@
-package Sistema;
+package sistema;
 
 import java.util.Date;
 
 public class Reserva {
     private static int idReserva = 0;
-    private int matriculaSolicitante;
-    private int matriculaAprovador;
-    private String tipoReserva;
+    private int idUsuarioSolicitante;
+    private int idUsuarioAprovador;
+    private String tipo;
     private Date dataReserva;
     private Date dataFinal;
     private Date horaReserva;
@@ -17,9 +17,9 @@ public class Reserva {
     private String observacao;
     
     public Reserva() {
-        this.matriculaSolicitante = 0;
-        this.matriculaAprovador = 0;
-        this.tipoReserva = null;
+        this.idUsuarioSolicitante = 0;
+        this.idUsuarioAprovador = 0;
+        this.tipo = null;
         this.dataReserva = null;
         this.dataFinal = null;
         this.horaReserva = null;
@@ -30,12 +30,13 @@ public class Reserva {
         this.observacao = null;
     }
 
-    public Reserva(int matriculaSolicitante, int matriculaAprovador, String tipoReserva, Date dataReserva,
+    public Reserva(int idUsuarioSolicitante, int idUsuarioAprovador, String tipo, Date dataReserva,
      Date dataFinal, Date horaReserva, Date horaFinal, int duracao, String statusReserva, String finalidade,
-      String observacao) {             
-        this.setMatriculaSolicitante(matriculaSolicitante);
-        this.setMatriculaAprovador(matriculaAprovador);
-        this.setTipoReserva(tipoReserva);
+      String observacao) {  
+        Reserva.idReserva = idReserva++;
+        this.setIdUsuarioSolicitante(idUsuarioSolicitante);
+        this.setIdUsuarioAprovador(idUsuarioAprovador);
+        this.setTipo(tipo);
         this.setDataReserva(dataReserva);
         this.setDataFinal(dataFinal);
         this.setHoraReserva(horaReserva);
@@ -44,40 +45,46 @@ public class Reserva {
         this.setStatusReserva(statusReserva);
         this.setFinalidade(finalidade);
         this.setObservacao(observacao);
-
-        this.idReserva = ++idReserva;
     }
 
-    public static int getIdReserva() {
+    public int getIdReserva() {
         return idReserva;
     }
 
-    public static void setIdReserva(int idReserva) {
-        Reserva.idReserva = idReserva;
+    public void setIdReserva(int idReserva) {
+        if(idReserva > 0){
+            Reserva.idReserva = idReserva;
+        }
     }
 
-    public int getMatriculaSolicitante() {
-        return matriculaSolicitante;
+    public int getIdUsuarioSolicitante() {
+        return idUsuarioSolicitante;
     }
 
-    public void setMatriculaSolicitante(int matriculaSolicitante) {
-        this.matriculaSolicitante = matriculaSolicitante;
+    public void setIdUsuarioSolicitante(int idUsuarioSolicitante) {
+        if(idUsuarioSolicitante > 0){
+            this.idUsuarioSolicitante = idUsuarioSolicitante;
+        }
     }
 
-    public int getMatriculaAprovador() {
-        return matriculaAprovador;
+    public int getIdUsuarioAprovador() {
+        return idUsuarioAprovador;
     }
 
-    public void setMatriculaAprovador(int matriculaAprovador) {
-        this.matriculaAprovador = matriculaAprovador;
+    public void setIdUsuarioAprovador(int idUsuarioAprovador) {
+        if(idUsuarioAprovador > 0){
+            this.idUsuarioAprovador = idUsuarioAprovador;
+        }
     }
 
-    public String getTipoReserva() {
-        return tipoReserva;
+    public String getTipo() {
+        return tipo;
     }
 
-    public void setTipoReserva(String tipoReserva) {
-        this.tipoReserva = tipoReserva;
+    public void setTipo(String tipo) {
+        if(tipo != null){   
+            this.tipo = tipo;
+        }
     }
 
     public Date getDataReserva() {
@@ -85,7 +92,9 @@ public class Reserva {
     }
 
     public void setDataReserva(Date dataReserva) {
-        this.dataReserva = dataReserva;
+        if (dataReserva != null) {
+            this.dataReserva = dataReserva;
+        }
     }
 
     public Date getDataFinal() {
@@ -93,7 +102,9 @@ public class Reserva {
     }
 
     public void setDataFinal(Date dataFinal) {
-        this.dataFinal = dataFinal;
+        if (dataReserva != null) {
+            this.dataFinal = dataFinal;
+        }        
     }
 
     public Date getHoraReserva() {
@@ -101,7 +112,9 @@ public class Reserva {
     }
 
     public void setHoraReserva(Date horaReserva) {
-        this.horaReserva = horaReserva;
+        if (dataReserva != null) {
+            this.horaReserva = horaReserva;
+        } 
     }
 
     public Date getHoraFinal() {
@@ -109,7 +122,9 @@ public class Reserva {
     }
 
     public void setHoraFinal(Date horaFinal) {
-        this.horaFinal = horaFinal;
+        if (dataReserva != null) {
+            this.horaFinal = horaFinal;
+        }         
     }
 
     public int getDuracao() {
@@ -117,7 +132,9 @@ public class Reserva {
     }
 
     public void setDuracao(int duracao) {
-        this.duracao = duracao;
+        if(duracao > 0){
+            this.duracao = duracao;
+        }
     }
 
     public String getStatusReserva() {
@@ -125,7 +142,10 @@ public class Reserva {
     }
 
     public void setStatusReserva(String statusReserva) {
-        this.statusReserva = statusReserva;
+        if(statusReserva != null){
+            this.statusReserva = statusReserva;
+        }
+        
     }
 
     public String getFinalidade() {
@@ -133,15 +153,39 @@ public class Reserva {
     }
 
     public void setFinalidade(String finalidade) {
-        this.finalidade = finalidade;
+        if(finalidade != null){
+            this.finalidade = finalidade;
+        }
     }
 
     public String getObservacao() {
         return observacao;
     }
 
-    public void setObservacao(String observacao) { // Correção aqui: de Sgtring para String
-        this.observacao = observacao;
+    public void setObservacao(String observacao) { 
+        if(observacao != null){
+            this.observacao = observacao;
+        }
+    }
+
+    public void solicitarReserva() {
+
+    }
+
+    public void alterarReserva() {
+
+    }
+
+    public void rejeitarReserva() {
+
+    }
+
+    public void aprovarReserva() {
+
+    }
+
+    public void excluirRerserva() {
+
     }
     
 }
