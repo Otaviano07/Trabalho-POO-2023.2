@@ -1,32 +1,26 @@
-package sistema;
+package Sistema;
 
 public class Professor {
-    private int idProfessor;
-    private String[] disciplinas;
+    private static int idProfessor = 0;
 
     public Professor() {
-        this.idProfessor = 0;
-        this.disciplinas = null;
+        Professor.idProfessor = idProfessor++;
     }
 
     public int getIdProfessor() {
-        return this.idProfessor;
+        return idProfessor;
     }
 
     public void setIdProfessor(int idProfessor) {
-        this.idProfessor = idProfessor;
+        if (idProfessor > 0) {
+            Professor.idProfessor = idProfessor;
+        }
     }
 
-    public String[] getDisciplinas() {
-        return disciplinas;
-    }
 
-    public void setDisciplinas(String[] disciplinas) {
-        this.disciplinas = disciplinas;
-    }
 
     public boolean compartilharReserva() {
-        return true;
+        return false;
     }
 
     public void aceitarReserva() {
