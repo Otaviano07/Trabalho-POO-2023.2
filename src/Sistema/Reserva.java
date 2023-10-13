@@ -12,7 +12,7 @@ public class Reserva {
     private Date horaReserva;
     private Date horaFinal;
     private int duracao;
-    private String statusReserva;
+    private boolean statusReserva;
     private String finalidade;
     private String observacao;
     
@@ -25,13 +25,13 @@ public class Reserva {
         this.horaReserva = null;
         this.horaFinal = null;
         this.duracao = 0;
-        this.statusReserva = null;
+        this.statusReserva = false;
         this.finalidade = null;
         this.observacao = null;
     }
 
     public Reserva(int idUsuarioSolicitante, int idUsuarioAprovador, String tipo, Date dataReserva,
-     Date dataFinal, Date horaReserva, Date horaFinal, int duracao, String statusReserva, String finalidade,
+     Date dataFinal, Date horaReserva, Date horaFinal, int duracao, boolean statusReserva, String finalidade,
       String observacao) {  
         Reserva.idReserva = idReserva++;
         this.setIdUsuarioSolicitante(idUsuarioSolicitante);
@@ -136,16 +136,13 @@ public class Reserva {
             this.duracao = duracao;
         }
     }
-
-    public String getStatusReserva() {
-        return statusReserva;
+    
+    public void setStatusReserva(boolean statusReserva) {
+        this.statusReserva = statusReserva;
     }
 
-    public void setStatusReserva(String statusReserva) {
-        if(statusReserva != null){
-            this.statusReserva = statusReserva;
-        }
-        
+    public boolean isStatusEspaco() {
+        return statusReserva;
     }
 
     public String getFinalidade() {
@@ -169,24 +166,33 @@ public class Reserva {
     }
 
     public void solicitarReserva() {
-
+        /*Esse método será utilizado para o usuario realizar a solicitação 
+        da reserva do espaço ou equipamento */
     }
 
     public void alterarReserva() {
-
+        /*Esse método será utilizado para alterar a reserva 
+        realizada pelo usuário, caso tenha informado algum dado incorreto */
     }
 
     public void rejeitarReserva() {
-
+        /*Esse método será utilizado pelo coordenador ou diretor, quando a 
+        reserva não for possivel conceder a aprovação*/
     }
 
     public void aprovarReserva() {
-
+        /*Esse método será utilizado pelo coordenador ou diretor para 
+        aprovar a reserva realizada por um usuário*/
     }
 
     public void excluirRerserva() {
-
+        /*Esse método será utilizado para excluir a reserva realizada e ou aprovada*/
     }
+
+    public void atualizarStatus(){
+        /*Esse método será utilizado para atualizar o status da reserva
+         pelo atributo statusReserva*/
+   }
     
 }
 
