@@ -1,4 +1,4 @@
-package sistema;
+package Sistema;
 
 public class Diretor {
     private static int idDiretor = 0;

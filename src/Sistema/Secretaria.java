@@ -1,4 +1,4 @@
-package sistema;
+package Sistema;
 
 public class Secretaria {
     private static int idSecretaria = 0;
