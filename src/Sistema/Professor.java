@@ -7,17 +7,15 @@ public class Professor {
         Professor.idProfessor = idProfessor++;
     }
 
-    public static int getIdProfessor() {
+    public int getIdProfessor() {
         return idProfessor;
     }
 
-    public static void setIdProfessor(int idProfessor) {
+    public void setIdProfessor(int idProfessor) {
         if (idProfessor > 0) {
             Professor.idProfessor = idProfessor;
         }
     }
-
-
 
     public boolean compartilharReserva() {
         return false;

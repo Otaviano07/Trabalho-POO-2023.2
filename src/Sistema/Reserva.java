@@ -1,4 +1,4 @@
-package sistema;
+package Sistema;
 
 import java.util.Date;
 
@@ -102,7 +102,7 @@ public class Reserva {
     }
 
     public void setDataFinal(Date dataFinal) {
-        if (dataReserva != null) {
+        if (dataFinal != null) {
             this.dataFinal = dataFinal;
         }        
     }
@@ -112,7 +112,7 @@ public class Reserva {
     }
 
     public void setHoraReserva(Date horaReserva) {
-        if (dataReserva != null) {
+        if (horaReserva != null) {
             this.horaReserva = horaReserva;
         } 
     }
@@ -122,7 +122,7 @@ public class Reserva {
     }
 
     public void setHoraFinal(Date horaFinal) {
-        if (dataReserva != null) {
+        if (horaFinal != null) {
             this.horaFinal = horaFinal;
         }         
     }

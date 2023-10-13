@@ -1,0 +1,41 @@
+package Sistema;
+
+public class Coordenador {
+    private static int idCoordenador = 0;
+    private boolean viceCoordenador;    
+
+    public Coordenador(){
+        this.viceCoordenador = false;
+    }
+
+    public Coordenador(boolean viceCoordenador) {
+        Coordenador.idCoordenador = idCoordenador++;
+        this.setViceCoordenador(viceCoordenador);
+    }
+
+    public static int getIdCoordenador() {
+        return idCoordenador;
+    }
+
+    public static void setIdCoordenador(int idCoordenador) {
+        if (idCoordenador > 0) {
+            Coordenador.idCoordenador = idCoordenador;
+        }
+    }
+
+    public boolean isViceCoordenador() {
+        return viceCoordenador;
+    }
+    
+    public void setViceCoordenador(boolean viceCoordenador) {
+        this.viceCoordenador = viceCoordenador;
+    }
+
+    public void aprovarReserva() {
+
+    }
+
+    public void rejeitarReserva() {
+
+    }
+}
