@@ -12,6 +12,7 @@ public class Equipamento {
     private String modelo;
     private double preco;
     private boolean statusEquipamento;
+    private boolean manutencao;
     private String localizacao;
     private Date dataCompra;
     private Date dataFabricao;
@@ -28,6 +29,7 @@ public class Equipamento {
         this.modelo = null;
         this.preco = 0.0;
         this.statusEquipamento = true;
+        this.manutencao = false;
         this.localizacao = null;
         this.dataCompra = null;
         this.dataFabricao = null;
@@ -38,23 +40,23 @@ public class Equipamento {
     }
 
     public Equipamento(String descricaoEquipamento, int quantidade, String marca, String fabricante, String modelo,
-            double preco, boolean statusEquipamento, String localizacao, Date dataCompra, Date dataFabricao,
+            double preco, boolean statusEquipamento, boolean manutencao,String localizacao, Date dataCompra, Date dataFabricao,
             Date dataUltimaManutencao, Date dataReservaEquipamento, String detalhesManutencao, String observacao) {
         Equipamento.idEquipamento = idEquipamento++;
-        this.descricaoEquipamento = descricaoEquipamento;
-        this.quantidade = quantidade;
-        this.marca = marca;
-        this.fabricante = fabricante;
-        this.modelo = modelo;
-        this.preco = preco;
-        this.statusEquipamento = statusEquipamento;
-        this.localizacao = localizacao;
-        this.dataCompra = dataCompra;
-        this.dataFabricao = dataFabricao;
-        this.dataUltimaManutencao = dataUltimaManutencao;
-        this.dataReservaEquipamento = dataReservaEquipamento;
-        this.detalhesManutencao = detalhesManutencao;
-        this.observacao = observacao;
+        this.setDescricaoEquipamento(descricaoEquipamento);
+        this.setQuantidade(quantidade);
+        this.setMarca(marca);
+        this.setFabricante(fabricante);
+        this.setModelo(modelo);
+        this.setPreco(preco);
+        this.setStatusEquipamento(statusEquipamento);
+        this.setLocalizacao(localizacao);
+        this.setDataCompra(dataCompra);
+        this.setDataFabricao(dataFabricao);
+        this.setDataUltimaManutencao(dataUltimaManutencao);
+        this.setDataReservaEquipamento(dataReservaEquipamento);
+        this.setDetalhesManutencao(detalhesManutencao);
+        this.setObservacao(observacao);
     }
 
     public static int getIdEquipamento() {
@@ -145,6 +147,14 @@ public class Equipamento {
         this.statusEquipamento = statusEquipamento;
     }
 
+    public boolean isManutencao() {
+        return manutencao;
+    }
+
+    public void setManutencao(boolean manutencao) {
+        this.manutencao = manutencao;
+    }
+
     public String getLocalizacao() {
         return localizacao;
     }
@@ -216,40 +226,42 @@ public class Equipamento {
     }
 
     public void adicionarEquipamento(){
-
+        /*Esse método será utilizado para adicionar um equipamento novo */
     }
 
     public void alterarEquipamento(){
-        
+        /*Esse método será utilizado para alterar alguma informação do 
+        equipamento cadastrado */
     }
 
     public void removerEquipamento(){
-        
+        /*Esse método será utilizado para remover um equipamento cadastrado */
     }
 
     public void realizarManutencao(){
-        
+        /*Esse método será utilizado para realizar alguma manutenção no equipamento, 
+        atualizando o atributo manutenção para true ou false*/
     }
 
     public void finalizarManutencao(){
-        
+        /*Esse método será utilizado para finalizar alguma manutenção no equipamento, 
+        atualizando o atributo manutenção para true ou false*/
     }
 
     public void atualizarLocalizacao(){
-        
+        /*Esse método será utilizado para atualizar localização do equipamento 
+        quado estiver reservado*/
     }
 
     public void atualizarStatus(){
-        
+         /*Esse método será utilizado para atualizar a disponibilidade do equipamento
+          pelo atributo statusEquipamento*/
     }
     
     public void obterInformacoes(){
-        
+        /*Esse método será utilizado para obter as informações do equipamento, 
+        como  idEquipamento, patrimonio, descricaoEquipamento, quantidade, marca, 
+        fabricante, modelo, preco, observacao como exemplo */
     }
-    
-    public void verificarDisponibilidade(){
-        
-    }
-
 
 }
