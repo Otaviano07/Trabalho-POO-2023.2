@@ -47,11 +47,11 @@ public class Reserva {
         this.setObservacao(observacao);
     }
 
-    public int getIdReserva() {
+    public static int getIdReserva() {
         return idReserva;
     }
 
-    public void setIdReserva(int idReserva) {
+    public static void setIdReserva(int idReserva) {
         if(idReserva > 0){
             Reserva.idReserva = idReserva;
         }
