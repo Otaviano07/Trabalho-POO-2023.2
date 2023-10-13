@@ -17,8 +17,6 @@ public class Professor {
         }
     }
 
-
-
     public boolean compartilharReserva() {
         return false;
     }
