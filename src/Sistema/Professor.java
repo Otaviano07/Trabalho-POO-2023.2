@@ -1,4 +1,4 @@
-package sistema;
+package Sistema;
 
 public class Professor {
     private static int idProfessor = 0;
@@ -16,6 +16,8 @@ public class Professor {
             Professor.idProfessor = idProfessor;
         }
     }
+
+
 
     public boolean compartilharReserva() {
         return false;
