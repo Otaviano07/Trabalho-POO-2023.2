@@ -1,4 +1,4 @@
-package Sistema;
+package sistema;
 
 public class Diretor {
     private static int idDiretor = 0;
@@ -32,10 +32,10 @@ public class Diretor {
     }
 
     public void aprovarReserva() {
-
+        /*Esse método será utilizado para aprovar reserva solicitada pelo professor ou outro usuario*/
     }
 
     public void rejeitarReserva() {
-
+        /*Esse método será utilizado para rejetirar solicitação de reserva de usuario*/
     }
 }

@@ -1,7 +1,11 @@
-package Sistema;
+package sistema;
 
 public class Main {
     public static void main(String[] args) throws Exception {
-        System.out.println("Hello, World!");
+        Usuario use = new Usuario();
+
+        use.setNomeCompleto("Otaviano");
+
+        System.out.println(use.getNomeCompleto());
     }
 }

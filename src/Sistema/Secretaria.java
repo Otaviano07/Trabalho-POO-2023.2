@@ -1,7 +1,7 @@
-package Sistema;
+package sistema;
 
 public class Secretaria {
-    private static int idSecretaria;
+    private static int idSecretaria = 0;
     private Professor[] professores;
     private Coordenador[] coordenadores;
     private Diretor[] diretores;
@@ -18,12 +18,13 @@ public class Secretaria {
     }
 
     public Secretaria(Professor[] professores, Coordenador[] coordenadores, Diretor[] diretores, Reserva[] reservas, Espaco[] espacos, Equipamento[] equipamentos) {
-        Secretaria.idSecretaria = 0;
-        this.professores = professores;
-        this.coordenadores = coordenadores;
-        this.diretores = diretores;
-        this.reservas = reservas;
-        this.equipamentos = equipamentos;
+        Secretaria.idSecretaria = idSecretaria++;
+        this.setProfessores(professores);
+        this.setCoordenadores(coordenadores);
+        this.setDiretores(diretores);
+        this.setReservas(reservas);
+        this.setEspacos(espacos);
+        this.setEquipamentos(equipamentos);
     }
 
     public static int getIdSecretaria() {
@@ -76,21 +77,23 @@ public class Secretaria {
         }
     }
 
-    public Equipamento[] getEquipamentos() {
-        if(equipamentos != null) {
-            return equipamentos;
+    public Espaco[] getEspacos() {
+        return espacos;
+    }
+
+    public void setEspacos(Espaco[] espacos) {
+        if(espacos != null) {
+            this.espacos = espacos;
         }
     }
 
-    public void adicionarReserva() {
-
+    public Equipamento[] getEquipamentos() {
+        return equipamentos;
     }
 
-    public void alterarReserva() {
-
-    }
-
-    public void removerReserva() {
-
+    public void setEquipamentos(Equipamento[] equipamentos) {
+        if(equipamentos != null) {
+            this.equipamentos = equipamentos;
+        }
     }
 }
