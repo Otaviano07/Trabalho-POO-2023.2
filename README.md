@@ -1,18 +1,5 @@
-## Getting Started
+## SGUEE
 
-Welcome to the VS Code Java world. Here is a guideline to help you get started to write Java code in Visual Studio Code.
+O **Sistema de Gestão do Uso de Espaços e Equipamentos (SGUEE)** é um software cujo objetivo é fazer a reserva e acompanhamento de espaços e equipamentos na Universidade Federal do Ceará (UFC).
 
-## Folder Structure
-
-The workspace contains two folders by default, where:
-
-- `src`: the folder to maintain sources
-- `lib`: the folder to maintain dependencies
-
-Meanwhile, the compiled output files will be generated in the `bin` folder by default.
-
-> If you want to customize the folder structure, open `.vscode/settings.json` and update the related settings there.
-
-## Dependency Management
-
-The `JAVA PROJECTS` view allows you to manage your dependencies. More details can be found [here](https://github.com/microsoft/vscode-java-dependency#manage-dependencies).
+O software está sendo desenvolvido por alunos da disciplina de Programação Orientada a Objetos (POO), sob tutela do professor Marcos Vinícius.
