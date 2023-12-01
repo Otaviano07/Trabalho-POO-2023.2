@@ -1,11 +1,10 @@
 package sistema;
 
+import java.util.Scanner;
+
 public class Main {
-    public static void main(String[] args) throws Exception {
-        Usuario use = new Usuario();
-
-        use.setNomeCompleto("Otaviano");
-
-        System.out.println(use.getNomeCompleto());
+    public static void main(String[] args) {
+        Controller controller = new Controller();
+        controller.iniciarSistema();
     }
 }
