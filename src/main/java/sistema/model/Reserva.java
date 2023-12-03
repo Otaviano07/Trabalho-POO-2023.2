@@ -3,7 +3,7 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 
 public class Reserva {
-    private static int proximoId = 1; // Iniciando em 1 conforme sua lógica
+    private static int proximoId = 1;
     private int idReserva;
     private int idUsuarioSolicitante;
     private int idUsuarioAprovador;

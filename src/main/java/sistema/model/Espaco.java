@@ -2,7 +2,7 @@ package main.java.sistema.model;
 
 import java.util.Date;
 
-public class Espaco {
+public class Espaco extends ItemReservavel {
     private static int idEspaco = 0;
     private String descricaoEspaco;
     private int capacidade;

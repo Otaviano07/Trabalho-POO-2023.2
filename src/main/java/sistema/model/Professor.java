@@ -1,6 +1,6 @@
 package main.java.sistema.model;
 
-public class Professor {
+public class Professor extends Usuario {
     private static int idProfessor = 0;
 
     public Professor() {

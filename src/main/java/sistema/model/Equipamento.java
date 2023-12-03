@@ -2,7 +2,7 @@ package main.java.sistema.model;
 
 import java.util.Date;
 
-public class Equipamento {
+public class Equipamento extends ItemReservavel {
     private static int idEquipamento;
     private int patrimonio;
     private String descricaoEquipamento;
