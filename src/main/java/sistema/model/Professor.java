@@ -1,4 +1,4 @@
-package sistema;
+package main.java.sistema.model;
 
 public class Professor {
     private static int idProfessor = 0;

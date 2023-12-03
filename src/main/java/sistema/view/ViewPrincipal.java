@@ -1,11 +1,11 @@
-package sistema;
+package main.java.sistema.view;
 
 import java.util.Scanner;
 
-public class View {
+public class ViewPrincipal {
     private Scanner scanner;
 
-    public View() {
+    public ViewPrincipal() {
         this.scanner = new Scanner(System.in);
     }
 

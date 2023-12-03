@@ -1,4 +1,4 @@
-package sistema;
+package main.java.sistema.model;
 
 import java.util.Date;
 
@@ -179,7 +179,7 @@ public class Usuario {
         /*Esse método será utilizado para adicionar um novo usuario*/
     }
 
-    public void altararPessoa(){
+    public void alterarPessoa(){
         /*Esse método será utilizado para alterar dados de pessoa cadastrada*/
     }
 
@@ -192,11 +192,11 @@ public class Usuario {
     }
 
     public void realizarLogin(){
-        /*Esse método será utilizado para realizar autenticação no sistema*/
+        /*Esse método será utilizado para realizar autenticação no main.java.sistema*/
     }
 
     public void logout(){
-        /*Esse método será utilizado para sair do sistema */
+        /*Esse método será utilizado para sair do main.java.sistema */
     }
 
     public void adicionarReserva() {

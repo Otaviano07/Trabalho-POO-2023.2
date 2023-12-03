@@ -1,4 +1,4 @@
-package sistema;
+package main.java.sistema.model;
 
 public class Diretor {
     private static int idDiretor = 0;

@@ -1,10 +1,12 @@
-package sistema;
+package main.java.sistema.controller;
 
-public class Controller {
-    private View view;
+import main.java.sistema.view.ViewPrincipal;
 
-    public Controller() {
-        this.view = new View();
+public class ControllerUsuario {
+    private ViewPrincipal view;
+
+    public ControllerUsuario() {
+        this.view = new ViewPrincipal();
     }
 
     public void iniciarSistema() {

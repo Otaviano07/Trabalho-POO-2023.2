@@ -1,4 +1,4 @@
-package sistema;
+package main.java.sistema.model;
 
 import java.util.Date;
 

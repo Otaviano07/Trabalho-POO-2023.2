@@ -1,22 +1,28 @@
-package sistema;
-
-import java.util.Date;
+package main.java.sistema.model;
+import java.time.LocalDate;
+import java.time.LocalTime;
 
 public class Reserva {
-    private static int idReserva = 0;
+    private static int proximoId = 1; // Iniciando em 1 conforme sua lógica
+    private int idReserva;
     private int idUsuarioSolicitante;
     private int idUsuarioAprovador;
     private String tipo;
-    private Date dataReserva;
-    private Date dataFinal;
-    private Date horaReserva;
-    private Date horaFinal;
+    private LocalDate dataReserva;
+    private LocalDate dataFinal;
+    private LocalTime horaReserva;
+    private LocalTime horaFinal;
     private int duracao;
     private boolean statusReserva;
     private String finalidade;
     private String observacao;
+
+    private static int gerarID() {
+        return proximoId++;
+    }
     
     public Reserva() {
+        this.idReserva = gerarID();
         this.idUsuarioSolicitante = 0;
         this.idUsuarioAprovador = 0;
         this.tipo = null;
@@ -30,10 +36,10 @@ public class Reserva {
         this.observacao = null;
     }
 
-    public Reserva(int idUsuarioSolicitante, int idUsuarioAprovador, String tipo, Date dataReserva,
-     Date dataFinal, Date horaReserva, Date horaFinal, int duracao, boolean statusReserva, String finalidade,
-      String observacao) {  
-        Reserva.idReserva = idReserva++;
+    public Reserva(int idUsuarioSolicitante, int idUsuarioAprovador, String tipo, LocalDate dataReserva,
+                   LocalDate dataFinal, LocalTime horaReserva, LocalTime horaFinal, int duracao, boolean statusReserva,
+                   String finalidade, String observacao) {
+        this.idReserva = gerarID();
         this.setIdUsuarioSolicitante(idUsuarioSolicitante);
         this.setIdUsuarioAprovador(idUsuarioAprovador);
         this.setTipo(tipo);
@@ -47,14 +53,22 @@ public class Reserva {
         this.setObservacao(observacao);
     }
 
-    public static int getIdReserva() {
-        return idReserva;
+    public Reserva(int idUsuarioSolicitante, String tipo, LocalDate dataReserva, LocalDate dataFinal,
+                   LocalTime horaReserva, LocalTime horaFinal, int duracao, String finalidade, String observacao) {
+        this.idReserva = gerarID();
+        this.setIdUsuarioSolicitante(idUsuarioSolicitante);
+        this.setTipo(tipo);
+        this.setDataReserva(dataReserva);
+        this.setDataFinal(dataFinal);
+        this.setHoraReserva(horaReserva);
+        this.setHoraFinal(horaFinal);
+        this.setDuracao(duracao);
+        this.setFinalidade(finalidade);
+        this.setObservacao(observacao);
     }
 
-    public static void setIdReserva(int idReserva) {
-        if(idReserva > 0){
-            Reserva.idReserva = idReserva;
-        }
+    public int getIdReserva() {
+        return idReserva;
     }
 
     public int getIdUsuarioSolicitante() {
@@ -87,41 +101,41 @@ public class Reserva {
         }
     }
 
-    public Date getDataReserva() {
+    public LocalDate getDataReserva() {
         return dataReserva;
     }
 
-    public void setDataReserva(Date dataReserva) {
+    public void setDataReserva(LocalDate dataReserva) {
         if (dataReserva != null) {
             this.dataReserva = dataReserva;
         }
     }
 
-    public Date getDataFinal() {
+    public LocalDate getDataFinal() {
         return dataFinal;
     }
 
-    public void setDataFinal(Date dataFinal) {
+    public void setDataFinal(LocalDate dataFinal) {
         if (dataFinal != null) {
             this.dataFinal = dataFinal;
         }        
     }
 
-    public Date getHoraReserva() {
+    public LocalTime getHoraReserva() {
         return horaReserva;
     }
 
-    public void setHoraReserva(Date horaReserva) {
+    public void setHoraReserva(LocalTime horaReserva) {
         if (horaReserva != null) {
             this.horaReserva = horaReserva;
         } 
     }
 
-    public Date getHoraFinal() {
+    public LocalTime getHoraFinal() {
         return horaFinal;
     }
 
-    public void setHoraFinal(Date horaFinal) {
+    public void setHoraFinal(LocalTime horaFinal) {
         if (horaFinal != null) {
             this.horaFinal = horaFinal;
         }         
@@ -164,6 +178,10 @@ public class Reserva {
             this.observacao = observacao;
         }
     }
+
+    @Override
+    public String toString() {
+        return "Reserva{" + "ID da reserva=" + idReserva + ", ID do usuário solicitante=" + idUsuarioSolicitante + ", ID do usuário aprovador=" + idUsuarioAprovador + ", Tipo da reserva=" + tipo + ", Data da reserva=" + dataReserva + ", Data final=" + dataFinal + ", Horário da reserva=" + horaReserva + ", Horário final=" + horaFinal + ", Duração=" + duracao + ", Status=" + statusReserva + ", Finalidade=" + finalidade + ", Observação=" + observacao + '}';}
 
     public void solicitarReserva() {
         /*Esse método será utilizado para o usuario realizar a solicitação 
