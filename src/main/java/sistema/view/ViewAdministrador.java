@@ -59,7 +59,7 @@ public class ViewAdministrador {
             System.out.println("1 - Adicionar espaço");
             System.out.println("2 - Remover espaço");
             System.out.println("3 - Editar espaço");
-            System.out.println("4 - Voltar");
+            System.out.println("0 - Voltar");
 
             int escolhaEspacos = scanner.nextInt();
             scanner.nextLine();
@@ -100,7 +100,7 @@ public class ViewAdministrador {
                         System.out.println("Espaço não encontrado.");
                     }
                     break;
-                case 4:
+                case 0:
                     voltar = true;
                     break;
                 default:
@@ -109,12 +109,70 @@ public class ViewAdministrador {
             }
         }
     }
+
     public void mostrarMenuEquipamentos() {
-        System.out.println("Opções para Gerenciar Equipamentos:");
-        System.out.println("1 - Adicionar equipamento");
-        System.out.println("2 - Remover equipamento");
-        System.out.println("3 - Editar equipamento");
-        System.out.println("0 - Voltar");
+        boolean voltar = false;
+
+        while (!voltar) {
+            System.out.println("Opções para Gerenciar Equipamentos:");
+            System.out.println("1 - Adicionar equipamento");
+            System.out.println("2 - Remover equipamento");
+            System.out.println("3 - Editar equipamento");
+            System.out.println("0 - Voltar");
+
+            int escolhaEspacos = scanner.nextInt();
+            scanner.nextLine();
+
+            switch (escolhaEspacos) {
+                case 1:
+                    System.out.print("Digite a descrição do equipamento ");
+                    String descricao = scanner.nextLine();
+                    System.out.print("Digite a quantidade: ");
+                    int quantidade = scanner.nextInt();
+                    System.out.print("Digite alguma observação sobre o equipamento: ");
+                    String observacoes = scanner.nextLine();
+                    System.out.print("Digite o fabricante do equipamento: ");
+                    String fabricante = scanner.nextLine();
+                    System.out.print("Digite o modelo do equipamento: ");
+                    String modelo = scanner.nextLine();
+
+                    controller.adicionarEquipamento(descricao, quantidade, true, LocalDate.of(2024, 9, 16), observacoes, fabricante, modelo, false);
+                    break;
+                case 2:
+                    System.out.print("Digite o ID do equipamento que deseja remover: ");
+                    int idEquipamento = scanner.nextInt();
+                    controller.removerEquipamento(idEquipamento);
+                    break;
+                case 3:
+                    System.out.print("Digite o ID do equipamento que deseja editar: ");
+                    int obterIdEquipamento = scanner.nextInt();
+
+                    if (controller.solicitarEdicaoEspaco(obterIdEquipamento)) {
+                        System.out.print("Digite a descrição do equipamento ");
+                        String descricaoEdicao = scanner.nextLine();
+                        System.out.print("Digite a quantidade: ");
+                        int quantidadeEdicao = scanner.nextInt();
+                        System.out.print("Digite alguma observação sobre o equipamento: ");
+                        String observacoesEdicao = scanner.nextLine();
+                        System.out.print("Digite o fabricante do equipamento: ");
+                        String fabricanteEdicao = scanner.nextLine();
+                        System.out.print("Digite o modelo do equipamento: ");
+                        String modeloEdicao = scanner.nextLine();
+
+                        controller.editarEquipamento(obterIdEquipamento, descricaoEdicao, quantidadeEdicao, true, LocalDate.of(2024, 9, 16), observacoes, fabricante, modeloEdicao, false);
+                    } else {
+                        System.out.println("Equipamento não encontrado.");
+                    }
+                    break;
+                case 0:
+                    voltar = true;
+                    break;
+                default:
+                    System.out.println("Escolha inválida. Tente novamente.");
+                    break;
+            }
+        }
+    }
     }
 
     public void mostrarMenuReservas() {
