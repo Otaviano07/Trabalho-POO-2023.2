@@ -1,23 +1,99 @@
 package main.java.sistema.view;
 
+import main.java.sistema.controller.ControllerAdministrador;
+
+import java.time.LocalDate;
+import java.util.Scanner;
+
 public class ViewAdministrador {
+    private final ControllerAdministrador controller;
+    private final Scanner scanner;
+
+    public ViewAdministrador(ControllerAdministrador controller, Scanner scanner) {
+        this.controller = controller;
+        this.scanner = scanner;
+    }
+
     public void mostrarMenuAdministrador() {
-        System.out.println("Menu Administrador:");
-        System.out.println("1 - Gerenciar espaços");
-        System.out.println("2 - Gerenciar equipamentos");
-        System.out.println("3 - Gerenciar reservas");
-        System.out.println("4 - Gerenciar usuários");
-        System.out.println("5 - Voltar");
+        boolean continuarExecucao = true;
+
+        while (continuarExecucao) {
+            System.out.println("Menu Administrador:");
+            System.out.println("1 - Gerenciar espaços");
+            System.out.println("2 - Gerenciar equipamentos");
+            System.out.println("3 - Gerenciar reservas");
+            System.out.println("4 - Gerenciar usuários");
+            System.out.println("5 - Sair");
+
+            int escolhaMenuPrincipal = scanner.nextInt();
+            scanner.nextLine();
+
+            switch (escolhaMenuPrincipal) {
+                case 1:
+                    mostrarMenuEspacos();
+                    break;
+                case 2:
+                    mostrarMenuEquipamentos();
+                    break;
+                case 3:
+                    mostrarMenuReservas();
+                    break;
+                case 4:
+                    mostrarMenuUsuarios();
+                    break;
+                case 5:
+                    continuarExecucao = false;
+                    break;
+                default:
+                    System.out.println("Escolha inválida. Tente novamente.");
+                    break;
+            }
+        }
     }
 
-    public void mostrarMenuEspacos() {
-        System.out.println("Opções para Gerenciar Espaços:");
-        System.out.println("1 - Adicionar espaço");
-        System.out.println("2 - Remover espaço");
-        System.out.println("3 - Editar espaço");
-        System.out.println("4 - Voltar");
-    }
+    private void mostrarMenuEspacos() {
+        boolean voltar = false;
 
+        while (!voltar) {
+            System.out.println("Opções para Gerenciar Espaços:");
+            System.out.println("1 - Adicionar espaço");
+            System.out.println("2 - Remover espaço");
+            System.out.println("3 - Editar espaço");
+            System.out.println("4 - Voltar");
+
+            int escolhaEspacos = scanner.nextInt();
+            scanner.nextLine();
+
+            switch (escolhaEspacos) {
+                case 1:
+                    System.out.print("Digite a descrição do espaço: ");
+                    String descricao = scanner.nextLine();
+                    System.out.print("Digite a quantidade disponível: ");
+                    int quantidade = scanner.nextInt();
+                    System.out.print("Digite alguma observação sobre o espaço: ");
+                    String observacoes = scanner.nextLine();
+                    System.out.print("Digite a capacidade do espaço: ");
+                    int capacidade = scanner.nextInt();
+
+                    controller.adicionarEspaco(descricao, quantidade, false, LocalDate.of(2024, 9, 16) , observacoes, capacidade, false);
+                    break;
+                case 2:
+                    System.out.print("Digite o ID do : ");
+
+                    controller.removerEspaco();
+                    break;
+                case 3:
+                    controller.editarEspaco();
+                    break;
+                case 4:
+                    voltar = true;
+                    break;
+                default:
+                    System.out.println("Escolha inválida. Tente novamente.");
+                    break;
+            }
+        }
+    }
     public void mostrarMenuEquipamentos() {
         System.out.println("Opções para Gerenciar Equipamentos:");
         System.out.println("1 - Adicionar equipamento");

@@ -25,10 +25,10 @@ public class ViewPrincipal {
 
             try {
                 opcao = scanner.nextInt();
-                scanner.nextLine();  // Limpar o buffer do scanner
+                scanner.nextLine();
             } catch (java.util.InputMismatchException e) {
                 System.out.println("Por favor, insira um número válido.");
-                scanner.nextLine();  // Limpar o buffer do scanner
+                scanner.nextLine();
                 opcao = -1;
             }
 
