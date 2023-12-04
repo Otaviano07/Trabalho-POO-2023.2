@@ -1,6 +1,8 @@
 package main.java.sistema.model;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 
 public class Usuario {
 	private static int proximoId = 1;
@@ -57,8 +59,17 @@ public class Usuario {
 	
 	
 	public void setDataNascimento(LocalDate dataNascimento) {
-		if(dataNascimento != null) {
-			this.dataNascimento = dataNascimento;
+		
+		try {
+			if(dataNascimento != null && isFormaDataValid(dataNascimento)) {
+				
+				if (dataNascimento.isBefore(LocalDate.now())) {
+					this.dataNascimento = dataNascimento;
+				}
+			}
+		}
+		catch(DateTimeParseException e){
+			System.out.println("Data de nascimento inválida. Deve ser no passado.");
 		}
 	}
     
@@ -70,18 +81,25 @@ public class Usuario {
 
 	public void setCpf(String cpf) {
 		if(cpf != null && !cpf.isEmpty()) {
-			this.cpf = cpf;
+			String numero = cpf.replaceAll("[^0-9]", "");
+
+			if (numero.matches("\\d{11}")) {
+				this.cpf = numero;
+			}
 		}
-	}public String getCpf() {
+	}
+	
+	public String getCpf() {
 		return cpf;
 	}
 	
-	
-
-	
 	public void setTelefone(String telefone) {
 		if(telefone != null && !telefone.isEmpty()) {
-			this.telefone = telefone;
+			String numero = telefone.replaceAll("[^0-9]", "");
+
+			if (numero.matches("\\d{11}")) {
+				this.telefone = numero;
+			}
 		}
 	}
     
@@ -92,7 +110,10 @@ public class Usuario {
 	
 	public void setEmail(String email) {
 		if(email != null && !email.isEmpty()) {
-			this.email = email;
+			if(email.matches("^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Z|a-z]{2,}$")){
+				this.email = email;
+			}
+			
 		}
 	}
     
@@ -123,10 +144,6 @@ public class Usuario {
         /*Esse método será utilizado para remover pessoa cadastrada */
     }
 
-    public void calcularIdade(){
-        /*Esse método será utilizado para calcular a idade com a data de nascimento fornecida*/
-    }
-
     public void realizarLogin(){
         /*Esse método será utilizado para realizar autenticação no main.java.sistema*/
     }
@@ -148,5 +165,15 @@ public class Usuario {
         /*Esse método será utilizado para remover uma reserva 
         de equipamento ou espaco cadastrada*/
     }
-	
+
+	private boolean isFormaDataValid(LocalDate data) {
+        try {
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+
+            return data.format(formatter).equals(data.toString());
+        } catch (DateTimeParseException e) {
+            return false;
+        }
+    }
+
 }
