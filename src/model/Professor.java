@@ -1,4 +1,4 @@
-package sistema;
+package model;
 
 public class Professor {
     private static int idProfessor = 0;
@@ -19,7 +19,7 @@ public class Professor {
 
     public void compartilharReserva() {
         /*Esse método será utilizado para compatilhar reserva para outro professor, 
-        caso mesmo depois de tido a aprovação do coordenado/diretor poderá compatilhar a reserva*/
+        caso mesmo depois de sido a aprovado pelo coordenador/diretor poderá compatilhar a reserva*/
     }
 
     public void aceitarReserva() {

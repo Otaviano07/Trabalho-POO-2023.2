@@ -1,5 +1,9 @@
-package sistema;
+package model;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 
 public class Equipamento {
@@ -14,10 +18,10 @@ public class Equipamento {
     private boolean statusEquipamento;
     private boolean manutencao;
     private String localizacao;
-    private Date dataCompra;
-    private Date dataFabricao;
-    private Date dataUltimaManutencao;
-    private Date dataReservaEquipamento;
+    private LocalDate dataCompra;
+    private LocalDate dataFabricao;
+    private LocalDate dataUltimaManutencao;
+    private LocalDate dataReservaEquipamento;
     private String detalhesManutencao;
     private String observacao;
 
@@ -165,43 +169,83 @@ public class Equipamento {
         }
     }
 
-    public Date getDataCompra() {
+    public LocalDate getDataCompra() {
         return dataCompra;
     }
 
     public void setDataCompra(Date dataCompra) {
         if(dataCompra != null){
-            this.dataCompra = dataCompra;
+            try {
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+
+                LocalDate data = LocalDate.parse((CharSequence) dataCompra, formatter);
+
+                if (data.isBefore(LocalDate.now())) {
+                    this.dataCompra = data;
+                }
+            } catch (Exception e) {
+                System.out.println("Formato de data inválido. Use o formato dd/MM/yyyy.");
+            }
         }
     }
 
-    public Date getDataFabricao() {
+    public LocalDate getDataFabricao() {
         return dataFabricao;
     }
 
     public void setDataFabricao(Date dataFabricao) {
         if(dataFabricao != null){ 
-            this.dataFabricao = dataFabricao;
+            try {
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+
+                LocalDate data = LocalDate.parse((CharSequence) dataFabricao, formatter);
+
+                if (data.isBefore(LocalDate.now())) {
+                    this.dataFabricao = data;
+                }
+            } catch (Exception e) {
+                System.out.println("Formato de data inválido. Use o formato dd/MM/yyyy.");
+            }
         }
     }
 
-    public Date getDataUltimaManutencao() {
+    public LocalDate getDataUltimaManutencao() {
         return dataUltimaManutencao;
     }
 
     public void setDataUltimaManutencao(Date dataUltimaManutencao) {
         if(dataUltimaManutencao != null){
-            this.dataUltimaManutencao = dataUltimaManutencao;
+            try {
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+
+                LocalDate data = LocalDate.parse((CharSequence) dataUltimaManutencao, formatter);
+
+                if (data.isBefore(LocalDate.now())) {
+                    this.dataUltimaManutencao =  data;
+                }
+            } catch (Exception e) {
+                System.out.println("Formato de data inválido. Use o formato dd/MM/yyyy.");
+            }
         }
     }
 
-    public Date getDataReservaEquipamento() {
+    public LocalDate getDataReservaEquipamento() {
         return dataReservaEquipamento;
     }
 
     public void setDataReservaEquipamento(Date dataReservaEquipamento) {
         if(dataReservaEquipamento != null){
-            this.dataReservaEquipamento = dataReservaEquipamento;
+            try {
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+
+                LocalDate data = LocalDate.parse((CharSequence) dataReservaEquipamento, formatter);
+
+                if (data.isBefore(LocalDate.now())) {
+                    this.dataReservaEquipamento =  data;
+                }
+            } catch (Exception e) {
+                System.out.println("Formato de data inválido. Use o formato dd/MM/yyyy.");
+            }
         }
     }
 

@@ -1,12 +1,15 @@
-package sistema;
+package model;
 
 import java.util.Date;
+import java.time.LocalDate;
+import java.time.Period;
+import java.time.format.DateTimeFormatter;
 
 public class Usuario {
 	
 	private static int idUsuario = 0;
 	private String nomeCompleto;
-	private Date dataNascimento;
+	private LocalDate dataNascimento;
 	private int idade;
 	private String cpf;
 	private String rg;
@@ -32,12 +35,11 @@ public class Usuario {
         this.senha = null;
     }
 	
-	public Usuario(String nomeCompleto, Date dataNascimento, int idade, String cpf, String rg, String telefone,
+	public Usuario(String nomeCompleto, Date dataNascimento, String cpf, String rg, String telefone,
             String email, String funcao, String formacao, String login, String senha) {
                 Usuario.idUsuario = idUsuario++;
                 this.setNomeCompleto(nomeCompleto);
                 this.setDataNascimento(dataNascimento);
-                this.setIdade(idade);
                 this.setCpf(cpf);
                 this.setRg(rg);
                 this.setTelefone(telefone);
@@ -61,7 +63,7 @@ public class Usuario {
 	
 	public void setNomeCompleto(String nomeCompleto) {
 		if(nomeCompleto != null && !nomeCompleto.isEmpty()) {
-			this.nomeCompleto = nomeCompleto;
+			this.nomeCompleto = nomeCompleto.toLowerCase();
 		}
 	}
     
@@ -72,36 +74,57 @@ public class Usuario {
 	
 	public void setDataNascimento(Date dataNascimento) {
 		if(dataNascimento != null) {
-			this.dataNascimento = dataNascimento;
+			try {
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+
+                LocalDate data = LocalDate.parse((CharSequence) dataNascimento, formatter);
+
+                if (data.isBefore(LocalDate.now())) {
+                    this.dataNascimento = data;
+                }
+            } catch (Exception e) {
+                System.out.println("Formato de data inválido. Use o formato dd/MM/yyyy.");
+            }
 		}
 	}
     
-    public Date getDataNascimento() {
+    public LocalDate getDataNascimento() {
 		return dataNascimento;
 	}
 	
 	
-	public void setIdade(int idade) {
-		if(idade > 0) {
-			this.idade = idade;
-		}
-	}public int getIdade() {
+	public void setIdade() {
+		LocalDate dataAtual = LocalDate.now();
+        this.idade = Period.between(getDataNascimento(), dataAtual).getYears();
+	}
+	
+	public int getIdade() {
 		return idade;
 	}
 	
 	
 	public void setCpf(String cpf) {
 		if(cpf != null && !cpf.isEmpty()) {
-			this.cpf = cpf;
+			String numero = cpf.replaceAll("[^0-9]", "");
+
+			if (numero.matches("\\d{11}")) {
+				this.cpf = numero;
+			}
 		}
-	}public String getCpf() {
+	}
+	
+	public String getCpf() {
 		return cpf;
 	}
 	
 	
 	public void setRg(String rg) {
 		if(rg != null && !rg.isEmpty()) {
-			this.rg = rg;
+			String numero = rg.replaceAll("[^0-9]", "");
+
+			if (numero.matches("\\d{8,11}")) {
+				this.rg = numero;
+			}
 		}
 	}
     
@@ -112,7 +135,11 @@ public class Usuario {
 	
 	public void setTelefone(String telefone) {
 		if(telefone != null && !telefone.isEmpty()) {
-			this.telefone = telefone;
+			String numero = telefone.replaceAll("[^0-9]", "");
+
+			if (numero.matches("\\d{11}")) {
+				this.telefone = numero;
+			}
 		}
 	}
     
@@ -123,7 +150,10 @@ public class Usuario {
 	
 	public void setEmail(String email) {
 		if(email != null && !email.isEmpty()) {
-			this.email = email;
+			if(email.matches("^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Z|a-z]{2,}$")){
+				this.email = email;
+			}
+			
 		}
 	}
     
@@ -156,7 +186,9 @@ public class Usuario {
 	
 	public void setLogin(String login) {
 		if(login != null && !login.isEmpty()) {
-			this.login = login;
+			if (login.matches("\\d{8,20}")) {
+				this.login = login;
+			}
 		}
 	}
     
@@ -167,7 +199,9 @@ public class Usuario {
 	
 	public void setSenha(String senha) {
 		if(senha != null && !senha.isEmpty()) {
-			this.senha = senha;
+			if(senha.matches("\\d{6,12}")){
+				this.senha = senha;
+			}
 		}
 	}
     

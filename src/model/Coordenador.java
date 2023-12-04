@@ -1,4 +1,4 @@
-package sistema;
+package model;
 
 public class Coordenador {
     private static int idCoordenador = 0;

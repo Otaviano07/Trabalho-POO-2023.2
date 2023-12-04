@@ -1,4 +1,6 @@
-package sistema;
+package controller;
+
+import view.View;
 
 public class Controller {
     private View view;

@@ -1,5 +1,7 @@
-package sistema;
+package model;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 
 public class Espaco {
@@ -9,7 +11,7 @@ public class Espaco {
     private boolean statusEspaco;
     private boolean reforma;
     private String recursosDisponiveis;
-    private Date dataReservaEspaco;
+    private LocalDate dataReservaEspaco;
     private Date horarioDisponivel;
     private String observacoes;
 
@@ -94,13 +96,23 @@ public class Espaco {
         }        
     }
 
-    public Date getDataReservaEspaco() {
+    public LocalDate getDataReservaEspaco() {
         return dataReservaEspaco;
     }
 
     public void setDataReservaEspaco(Date dataReservaEspaco) {
         if(dataReservaEspaco != null){
-            this.dataReservaEspaco = dataReservaEspaco;
+            try {
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+
+                LocalDate data = LocalDate.parse((CharSequence) dataReservaEspaco, formatter);
+
+                if (data.isBefore(LocalDate.now())) {
+                    this.dataReservaEspaco =  data;
+                }
+            } catch (Exception e) {
+                System.out.println("Formato de data inválido. Use o formato dd/MM/yyyy.");
+            }
         }
     }
 
