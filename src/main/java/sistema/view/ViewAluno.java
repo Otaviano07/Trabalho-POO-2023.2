@@ -1,7 +1,8 @@
 package main.java.sistema.view;
 
-public class ViewProfessor {
-        public void mostrarMenuProfessor() {
+public class ViewAluno {
+
+        public void mostrarMenuAluno() {
             System.out.println("1 - Gerenciar reservas");
             System.out.println("2 - Voltar");
         }

@@ -8,7 +8,7 @@ import java.util.ArrayList;
 public class ControllerUsuario {
     private ArrayList<Usuario> usuarios = Administrador.getUsuarios();
 
-    public Usuario fazerlogin(String email, String senha) {
+    public Usuario fazerLogin(String email, String senha) {
         for (Usuario usuario : usuarios) {
             if (usuario.getEmail().equals(email) && usuario.getSenha().equals(senha)) {
                 return usuario;

@@ -5,6 +5,7 @@ public class ViewAdministrador {
         System.out.println("1 - Gerenciar espaços");
         System.out.println("2 - Gerenciar equipamentos");
         System.out.println("3 - Gerenciar reservas");
-        System.out.println("4 - Sair");
+        System.out.println("3 - Gerenciar usuários");
+        System.out.println("4 - Voltar");
     }
 }
