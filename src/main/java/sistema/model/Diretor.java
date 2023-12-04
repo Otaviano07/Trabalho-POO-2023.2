@@ -1,6 +1,6 @@
 package main.java.sistema.model;
 
-public class Diretor extends Administrador {
+public class Diretor extends UsuarioAprovador {
 
     public Diretor() {
 

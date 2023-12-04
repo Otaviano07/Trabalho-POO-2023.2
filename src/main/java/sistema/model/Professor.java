@@ -1,21 +1,32 @@
 package main.java.sistema.model;
 
+import java.time.LocalDate;
+
 public class Professor extends Usuario {
-    private static int idProfessor = 0;
+    private String formacao;
 
     public Professor() {
-        Professor.idProfessor = idProfessor++;
+        super();
+        this.formacao = null;
     }
 
-    public int getIdProfessor() {
-        return idProfessor;
+    public Professor(String nomeCompleto, LocalDate dataNascimento, String cpf, String telefone, String email, String senha, String formacao) {
+        super(nomeCompleto, dataNascimento, cpf, telefone, email, senha);
+        this.setFormacao(formacao);
     }
 
-    public void setIdProfessor(int idProfessor) {
-        if (idProfessor > 0) {
-            Professor.idProfessor = idProfessor;
+
+    public void setFormacao(String formacao) {
+        if(formacao != null && !formacao.isEmpty()) {
+            this.formacao = formacao;
         }
     }
+
+    public String getFormacao() {
+        return formacao;
+    }
+
+
 
     public void compartilharReserva() {
         /*Esse método será utilizado para compatilhar reserva para outro professor, 

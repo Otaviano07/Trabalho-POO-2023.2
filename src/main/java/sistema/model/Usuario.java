@@ -1,61 +1,47 @@
 package main.java.sistema.model;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 public class Usuario {
-	
-	private static int idUsuario = 0;
+	private static int proximoId = 1;
+	private int id;
 	private String nomeCompleto;
-	private Date dataNascimento;
-	private int idade;
+	private LocalDate dataNascimento;
 	private String cpf;
-	private String rg;
 	private String telefone;
 	private String email;
-	private String funcao;
-	private String formacao;
-	private String login;
 	private String senha;
+
+	private static int gerarID() {
+		return proximoId++;
+	}
 
 
 	public Usuario() {
-        this.nomeCompleto = null;
+		this.id = gerarID();
+		this.nomeCompleto = null;
         this.dataNascimento = null;
-        this.idade = 0;
         this.cpf = null;
-        this.rg = null;
         this.telefone = null;
         this.email = null;
-        this.funcao = null;
-        this.formacao = null;
-        this.login = null;
         this.senha = null;
     }
 	
-	public Usuario(String nomeCompleto, Date dataNascimento, int idade, String cpf, String rg, String telefone,
-            String email, String funcao, String formacao, String login, String senha) {
-                Usuario.idUsuario = idUsuario++;
+	public Usuario(String nomeCompleto, LocalDate dataNascimento, String cpf,  String telefone,
+            String email, String senha) {
+				this.id = gerarID();
                 this.setNomeCompleto(nomeCompleto);
                 this.setDataNascimento(dataNascimento);
-                this.setIdade(idade);
                 this.setCpf(cpf);
-                this.setRg(rg);
                 this.setTelefone(telefone);
                 this.setEmail(email);
-                this.setFuncao(funcao);
-                this.setFormacao(formacao);
-                this.setLogin(login);
                 this.setSenha(senha);
     }
 
-    public void setIdUsuario(int idUsuario) {
-		if(idUsuario > 0) {
-			Usuario.idUsuario = idUsuario;
-		}
-	}
-    
-    public int getIdUsuario() {
-		return idUsuario;
+
+
+	public int getId() {
+		return id;
 	}
 	
 	
@@ -70,26 +56,18 @@ public class Usuario {
 	}
 	
 	
-	public void setDataNascimento(Date dataNascimento) {
+	public void setDataNascimento(LocalDate dataNascimento) {
 		if(dataNascimento != null) {
 			this.dataNascimento = dataNascimento;
 		}
 	}
     
-    public Date getDataNascimento() {
+    public LocalDate getDataNascimento() {
 		return dataNascimento;
 	}
 	
 	
-	public void setIdade(int idade) {
-		if(idade > 0) {
-			this.idade = idade;
-		}
-	}public int getIdade() {
-		return idade;
-	}
-	
-	
+
 	public void setCpf(String cpf) {
 		if(cpf != null && !cpf.isEmpty()) {
 			this.cpf = cpf;
@@ -99,16 +77,7 @@ public class Usuario {
 	}
 	
 	
-	public void setRg(String rg) {
-		if(rg != null && !rg.isEmpty()) {
-			this.rg = rg;
-		}
-	}
-    
-    public String getRg() {
-		return rg;
-	}
-	
+
 	
 	public void setTelefone(String telefone) {
 		if(telefone != null && !telefone.isEmpty()) {
@@ -130,40 +99,7 @@ public class Usuario {
     public String getEmail() {
 		return email;
 	}
-	
-	
-	public void setFuncao(String funcao) {
-		if(funcao != null && !funcao.isEmpty()) {
-			this.funcao = funcao;
-		}
-	}
-    
-    public String getFuncao() {
-		return funcao;
-	}
-	
-	
-	public void setFormacao(String formacao) {
-		if(formacao != null && !formacao.isEmpty()) {
-			this.formacao = formacao;
-		}
-	}
-    
-    public String getFormacao() {
-		return formacao;
-	}
-	
-	
-	public void setLogin(String login) {
-		if(login != null && !login.isEmpty()) {
-			this.login = login;
-		}
-	}
-    
-    public String getLogin() {
-		return login;
-	}
-	
+
 	
 	public void setSenha(String senha) {
 		if(senha != null && !senha.isEmpty()) {

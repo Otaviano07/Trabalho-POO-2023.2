@@ -1,25 +1,28 @@
 package main.java.sistema.controller;
 
+import main.java.sistema.model.Administrador;
+import main.java.sistema.model.Reserva;
+
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.Iterator;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
-import main.java.sistema.model.Reserva;
 
 public class ControllerReserva {
+    private Administrador administrador;
     private ArrayList<Reserva> reservas;
 
-    public ControllerReserva() {
-        this.reservas = new ArrayList<>();
+    public ControllerReserva(Administrador administrador) {
+        this.administrador = administrador;
+        this.reservas = administrador.getReservas();
     }
 
     public void adicionarReserva(int idUsuarioSolicitante, String tipo, LocalDate dataReserva,
                                  LocalDate dataFinal, LocalTime horaReserva, LocalTime horaFinal, int duracao, String finalidade,
                                  String observacao) {
         Reserva reserva = new Reserva(idUsuarioSolicitante, tipo, dataReserva, dataFinal, horaReserva, horaFinal, duracao, finalidade, observacao);
-        reservas.add(reserva);
+        administrador.getReservas().add(reserva);
     }
 
     public void removerReserva(int idReserva) {
@@ -58,7 +61,6 @@ public class ControllerReserva {
             }
         }
     }
-
 
     public ArrayList<Reserva> listarReservas() {
         return reservas;

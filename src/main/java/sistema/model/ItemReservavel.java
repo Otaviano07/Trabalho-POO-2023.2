@@ -1,74 +1,76 @@
 package main.java.sistema.model;
+import java.time.LocalDate;
 
 public class ItemReservavel {
-private static int idItemReservavel = 0;
-    private String descricaoItem;
-    private boolean statusItem;
-    private boolean reforma;
-    private String recursosDisponiveis;
+    private static int id = 0;
+    private String descricao;
+    private int quantidade;
+    private boolean status;
+    private LocalDate dataReserva;
     private String observacoes;
 
     public ItemReservavel() {
-        this.descricaoItem = null;
-        this.statusItem = true;
-        this.reforma = false;
-        this.recursosDisponiveis = null;
+        this.descricao = null;
+        this.quantidade = 0;
+        this.status = true;
+        this.dataReserva = null;
         this.observacoes = null;
     }
 
-    public ItemReservavel(String descricaoItem, boolean statusItem, boolean reforma, String recursosDisponiveis,
-            String observacoes) {
-        ItemReservavel.idItemReservavel = idItemReservavel++;
-        this.setDescricaoItem(descricaoItem);
-        this.setStatusItem(statusItem);
-        this.setReforma(reforma);
-        this.setRecursosDisponiveis(recursosDisponiveis);
+    public ItemReservavel(String descricao, int quantidade, boolean status, LocalDate dataReserva, String observacoes) {
+        ItemReservavel.id = id++;
+        this.setDescricao(descricao);
+        this.setQuantidade(quantidade);
+        this.setStatus(status);
+        this.setDataReserva(dataReserva);
         this.setObservacoes(observacoes);
     }
 
-    public static int getIdItemReservavel() {
-        return idItemReservavel;
+    public static int getId() {
+        return id;
     }
 
-    public static void setIdItemReservavel(int idItemReservavel) {
-        if(idItemReservavel > 0){
-            ItemReservavel.idItemReservavel = idItemReservavel;
+    public static void setId(int id) {
+        if(id > 0){
+            ItemReservavel.id = id;
         }
     }
 
-    public String getDescricaoItem() {
-        return descricaoItem;
+    public String getDescricao() {
+        return descricao;
     }
 
-    public void setDescricaoItem(String descricaoItem) {
-        if(descricaoItem != null){
-            this.descricaoItem = descricaoItem;
+    public void setDescricao(String descricao) {
+        if(descricao != null){
+            this.descricao = descricao;
         }
     }
 
-    public boolean isStatusItem() {
-        return statusItem;
+    public int getQuantidade() {
+        return quantidade;
     }
 
-    public void setStatusItem(boolean statusItem) {
-        this.statusItem = statusItem;
+    public void setQuantidade(int quantidade) {
+        if(quantidade > 0){
+            this.quantidade = quantidade;
+        }
     }
 
-    public boolean isReforma() {
-        return reforma;
+    public boolean isStatus() {
+        return status;
     }
 
-    public void setReforma(boolean reforma) {
-        this.reforma = reforma;
+    public void setStatus(boolean status) {
+        this.status = status;
     }
 
-    public String getRecursosDisponiveis() {
-        return recursosDisponiveis;
+    public LocalDate getDataReserva() {
+        return dataReserva;
     }
 
-    public void setRecursosDisponiveis(String recursosDisponiveis) {
-        if(recursosDisponiveis != null){
-            this.recursosDisponiveis = recursosDisponiveis;
+    public void setDataReserva(LocalDate dataReserva) {
+        if (dataReserva != null) {
+            this.dataReserva = dataReserva;
         }
     }
 
@@ -79,4 +81,32 @@ private static int idItemReservavel = 0;
     public void setObservacoes(String observacoes) {
         if(observacoes != null){
             this.observacoes = observacoes;
-}}}
+        }
+    }
+
+
+    public void adicionar() {
+
+    }
+
+    public void remover() {
+
+    }
+
+    public void alterar() {
+
+    }
+
+    public void atualizarStatus() {
+
+    }
+
+    public void verificarDisponibilidade() {
+
+    }
+
+    @Override
+    public String toString() {
+        return "ItemReservavel{" + "descricao=" + descricao + ", quantidade=" + quantidade + ", status=" + status + ", dataReserva=" + dataReserva + ", observacoes=" + observacoes + '}';
+    }
+}
