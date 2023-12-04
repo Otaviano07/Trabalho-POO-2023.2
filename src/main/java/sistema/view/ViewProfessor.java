@@ -4,7 +4,7 @@ public class ViewProfessor {
         public void mostrarMenuProfessor() {
             System.out.println("==== Sistema de Reservas ====\n");
             System.out.println("1 - Gerenciar reservas");
-            
+            System.out.println("2 - Compatipatilha reserva");
             System.out.println("0 - Voltar");
         }
 }
