@@ -1,5 +1,6 @@
 package main.java.sistema.model;
 
+import java.util.ArrayList;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
@@ -13,6 +14,9 @@ public class Usuario {
 	private String telefone;
 	private String email;
 	private String senha;
+
+	private static ArrayList<Usuario> usuarios = new ArrayList<>();
+
 
 	private static int gerarID() {
 		return proximoId++;
@@ -39,8 +43,6 @@ public class Usuario {
                 this.setEmail(email);
                 this.setSenha(senha);
     }
-
-
 
 	public int getId() {
 		return id;

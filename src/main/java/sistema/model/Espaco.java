@@ -3,22 +3,19 @@ package main.java.sistema.model;
 import java.time.LocalDate;
 
 public class Espaco extends ItemReservavel {
-    private static int idEspaco = 0;
     private boolean reforma;
-    private LocalDate horarioDisponivel;
+    private int capacidade;
 
     public Espaco() {
         super();
-        Espaco.idEspaco = idEspaco++;
         this.setReforma(false);
-        this.setHorarioDisponivel(null);
+        this.setCapacidade(0);
     }
 
-    public Espaco(String descricaoEspaco, int capacidade, boolean statusEspaco, boolean reforma, LocalDate dataReservaEspaco, LocalDate horarioDisponivel, String observacoes) {
-        super(descricaoEspaco, capacidade, statusEspaco, dataReservaEspaco, observacoes);
-        Espaco.idEspaco = idEspaco++;
+    public Espaco(String descricao, int quantidade, boolean status, LocalDate dataDisponivel, String observacoes, int capacidade, boolean reforma) {
+        super(descricao, quantidade, status, dataDisponivel, observacoes);
         this.setReforma(reforma);
-        this.setHorarioDisponivel(horarioDisponivel);
+        this.setCapacidade(capacidade);
     }
 
     public boolean isReforma() {
@@ -30,13 +27,13 @@ public class Espaco extends ItemReservavel {
     }
 
 
-    public LocalDate getHorarioDisponivel() {
-        return horarioDisponivel;
+    public int getCapacidade() {
+        return capacidade;
     }
 
-    public void setHorarioDisponivel(LocalDate horarioDisponivel) {
-        if (horarioDisponivel != null) {
-            this.horarioDisponivel = horarioDisponivel;
+    public void setCapacidade(int capacidade) {
+        if (capacidade != 0) {
+            this.capacidade = capacidade;
         }
     }
 
@@ -47,7 +44,7 @@ public class Espaco extends ItemReservavel {
 
     @Override
     public String toString() {
-        return "Espaco{" + super.toString() + "reforma=" + reforma + ", horarioDisponivel=" + horarioDisponivel + '}';
+        return "Espaco{" + super.toString() + "reforma=" + reforma + ", capacidade=" + capacidade + '}';
     }
 }
 

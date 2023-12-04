@@ -1,37 +1,19 @@
 package main.java.sistema.controller;
 
-import main.java.sistema.view.ViewPrincipal;
+import main.java.sistema.model.Administrador;
+import main.java.sistema.model.Usuario;
+
+import java.util.ArrayList;
 
 public class ControllerUsuario {
-    private ViewPrincipal view;
+    private ArrayList<Usuario> usuarios = Administrador.getUsuarios();
 
-    public ControllerUsuario() {
-        this.view = new ViewPrincipal();
-    }
-
-    public void iniciarSistema() {
-        int opcao;
-        do {
-            opcao = view.mostrarMenu();
-
-            switch (opcao) {
-                case 1:
-                    // Lógica para gerenciar espaços
-                    break;
-                case 2:
-                    // Lógica para gerenciar equipamentos
-                    break;
-                case 3:
-                    // Lógica para gerenciar reservas
-                    break;
-                case 4:
-                    view.mostrarMensagem("Sistema encerrado.");
-                    break;
-                default:
-                    view.mostrarMensagem("Opção inválida. Tente novamente.");
+    public Usuario fazerLogin(String email, String senha) {
+        for (Usuario usuario : usuarios) {
+            if (usuario.getEmail().equals(email) && usuario.getSenha().equals(senha)) {
+                return usuario;
             }
-
-        } while (opcao != 4);
+        }
+        return null;
     }
-
 }
