@@ -4,7 +4,7 @@ import java.time.LocalTime;
 
 public class Reserva {
     private static int proximoId = 1;
-    private int idReserva;
+    private int id;
     private int idUsuarioSolicitante;
     private int idUsuarioAprovador;
     private String tipo;
@@ -22,7 +22,7 @@ public class Reserva {
     }
     
     public Reserva() {
-        this.idReserva = gerarID();
+        this.id = gerarID();
         this.idUsuarioSolicitante = 0;
         this.idUsuarioAprovador = 0;
         this.tipo = null;
@@ -39,7 +39,7 @@ public class Reserva {
     public Reserva(int idUsuarioSolicitante, int idUsuarioAprovador, String tipo, LocalDate dataReserva,
                    LocalDate dataFinal, LocalTime horaReserva, LocalTime horaFinal, int duracao, boolean statusReserva,
                    String finalidade, String observacao) {
-        this.idReserva = gerarID();
+        this.id = gerarID();
         this.setIdUsuarioSolicitante(idUsuarioSolicitante);
         this.setIdUsuarioAprovador(idUsuarioAprovador);
         this.setTipo(tipo);
@@ -55,7 +55,7 @@ public class Reserva {
 
     public Reserva(int idUsuarioSolicitante, String tipo, LocalDate dataReserva, LocalDate dataFinal,
                    LocalTime horaReserva, LocalTime horaFinal, int duracao, String finalidade, String observacao) {
-        this.idReserva = gerarID();
+        this.id = gerarID();
         this.setIdUsuarioSolicitante(idUsuarioSolicitante);
         this.setTipo(tipo);
         this.setDataReserva(dataReserva);
@@ -67,8 +67,8 @@ public class Reserva {
         this.setObservacao(observacao);
     }
 
-    public int getIdReserva() {
-        return idReserva;
+    public int getId() {
+        return id;
     }
 
     public int getIdUsuarioSolicitante() {
@@ -181,7 +181,7 @@ public class Reserva {
 
     @Override
     public String toString() {
-        return "Reserva{" + "ID da reserva=" + idReserva + ", ID do usuário solicitante=" + idUsuarioSolicitante + ", ID do usuário aprovador=" + idUsuarioAprovador + ", Tipo da reserva=" + tipo + ", Data da reserva=" + dataReserva + ", Data final=" + dataFinal + ", Horário da reserva=" + horaReserva + ", Horário final=" + horaFinal + ", Duração=" + duracao + ", Status=" + statusReserva + ", Finalidade=" + finalidade + ", Observação=" + observacao + '}';}
+        return "Reserva{" + "ID da reserva=" + id + ", ID do usuário solicitante=" + idUsuarioSolicitante + ", ID do usuário aprovador=" + idUsuarioAprovador + ", Tipo da reserva=" + tipo + ", Data da reserva=" + dataReserva + ", Data final=" + dataFinal + ", Horário da reserva=" + horaReserva + ", Horário final=" + horaFinal + ", Duração=" + duracao + ", Status=" + statusReserva + ", Finalidade=" + finalidade + ", Observação=" + observacao + '}';}
 
     public void solicitarReserva() {
         /*Esse método será utilizado para o usuario realizar a solicitação 

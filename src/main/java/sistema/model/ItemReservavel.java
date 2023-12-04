@@ -2,38 +2,38 @@ package main.java.sistema.model;
 import java.time.LocalDate;
 
 public class ItemReservavel {
-    private static int id = 0;
+    private static int proximoId = 1;
+    private int id;
     private String descricao;
     private int quantidade;
     private boolean status;
-    private LocalDate dataReserva;
+    private LocalDate dataDisponivel;
     private String observacoes;
 
+    private static int gerarID() {
+        return proximoId++;
+    }
+
     public ItemReservavel() {
+        this.id = gerarID();
         this.descricao = null;
         this.quantidade = 0;
         this.status = true;
-        this.dataReserva = null;
+        this.dataDisponivel = null;
         this.observacoes = null;
     }
 
-    public ItemReservavel(String descricao, int quantidade, boolean status, LocalDate dataReserva, String observacoes) {
-        ItemReservavel.id = id++;
+    public ItemReservavel(String descricao, int quantidade, boolean status, LocalDate dataDisponivel, String observacoes) {
+        this.id = gerarID();
         this.setDescricao(descricao);
         this.setQuantidade(quantidade);
         this.setStatus(status);
-        this.setDataReserva(dataReserva);
+        this.setDataDisponivel(dataDisponivel);
         this.setObservacoes(observacoes);
     }
 
-    public static int getId() {
+    public int getId() {
         return id;
-    }
-
-    public static void setId(int id) {
-        if(id > 0){
-            ItemReservavel.id = id;
-        }
     }
 
     public String getDescricao() {
@@ -65,12 +65,12 @@ public class ItemReservavel {
     }
 
     public LocalDate getDataReserva() {
-        return dataReserva;
+        return dataDisponivel;
     }
 
-    public void setDataReserva(LocalDate dataReserva) {
-        if (dataReserva != null) {
-            this.dataReserva = dataReserva;
+    public void setDataDisponivel(LocalDate dataDisponivel) {
+        if (dataDisponivel != null) {
+            this.dataDisponivel = dataDisponivel;
         }
     }
 
@@ -107,6 +107,6 @@ public class ItemReservavel {
 
     @Override
     public String toString() {
-        return "ItemReservavel{" + "descricao=" + descricao + ", quantidade=" + quantidade + ", status=" + status + ", dataReserva=" + dataReserva + ", observacoes=" + observacoes + '}';
+        return "ItemReservavel{" + "descricao=" + descricao + ", quantidade=" + quantidade + ", status=" + status + ", observacoes=" + observacoes + '}';
     }
 }

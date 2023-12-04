@@ -1,13 +1,17 @@
 package main.java.sistema.model;
 
+import java.time.LocalDate;
+
 public class UsuarioAprovador extends Usuario {
     private boolean vice;
 
     public UsuarioAprovador(){
+        super();
         this.vice = false;
     }
 
-    public UsuarioAprovador(boolean vice) {
+    public UsuarioAprovador(String nomeCompleto, LocalDate dataNascimento, String cpf, String telefone, String email, String senha, boolean vice) {
+        super(nomeCompleto, dataNascimento, cpf, telefone, email, senha);
         this.setVice(vice);
     }
 

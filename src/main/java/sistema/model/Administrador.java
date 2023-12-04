@@ -1,124 +1,75 @@
 package main.java.sistema.model;
+
 import java.util.ArrayList;
 import java.time.LocalDate;
-import main.java.sistema.model.Professor;
 
-public class Administrador {
-    private static int idSecretaria = 0;
-    private ArrayList<Professor> professores;
-    private ArrayList<Coordenador> coordenadores;
-    private ArrayList<Diretor> diretores;
-    private ArrayList<Reserva> reservas;
-    private ArrayList<Espaco> espacos;
-    private ArrayList<Equipamento> equipamentos;
+public class Administrador extends Usuario {
+    private String funcao;
+    private static ArrayList<Usuario> usuarios = new ArrayList<>();
+    private static ArrayList<Administrador> administradores = new ArrayList<>();
+    private static ArrayList<Professor> professores = new ArrayList<>();
+    private static ArrayList<Aluno> alunos = new ArrayList<>();
+    private static ArrayList<Coordenador> coordenadores = new ArrayList<>();
+    private static ArrayList<Diretor> diretores = new ArrayList<>();
+    private static ArrayList<Reserva> reservas = new ArrayList<>();
+    private static ArrayList<Espaco> espacos = new ArrayList<>();
+    private static ArrayList<Equipamento> equipamentos = new ArrayList<>();
 
     public Administrador() {
-        this.professores = new ArrayList<>();
-        this.coordenadores = new ArrayList<>();
-        this.diretores = new ArrayList<>();
-        this.reservas = new ArrayList<>();
-        this.espacos = new ArrayList<>();
-        this.equipamentos = new ArrayList<>();
+        super();
+        this.funcao = null;
+        administradores.add(this);
     }
 
-    public Administrador(ArrayList<Professor> professores, ArrayList<Coordenador> coordenadores, ArrayList<Diretor> diretores, ArrayList<Reserva> reservas, ArrayList<Espaco> espacos, ArrayList<Equipamento> equipamentos) {
-        Administrador.idSecretaria = idSecretaria++;
-        this.setProfessores(professores);
-        this.setCoordenadores(coordenadores);
-        this.setDiretores(diretores);
-        this.setReservas(reservas);
-        this.setEspacos(espacos);
-        this.setEquipamentos(equipamentos);
+    public Administrador(String nomeCompleto, LocalDate dataNascimento, String cpf, String telefone, String email, String senha, String funcao) {
+        super(nomeCompleto, dataNascimento, cpf, telefone, email, senha);
+        setFuncao(funcao);
+        administradores.add(this);
     }
 
-    public static int getIdSecretaria() {
-        return idSecretaria;
-    }
-
-    public static void setIdSecretaria(int idSecretaria) {
-        if (idSecretaria > 0) {
-            Administrador.idSecretaria = idSecretaria;
+    public void setFuncao(String funcao) {
+        if (funcao != null && !funcao.isEmpty()) {
+            this.funcao = funcao;
         }
     }
 
-    public ArrayList<Professor> getProfessores() {
-        return this.professores;
+    public String getFuncao() {
+        return funcao;
     }
 
-    public void setProfessores(ArrayList<Professor> professores) {
-        if (professores != null) {
-            this.professores = professores;
-        }
+    public static ArrayList<Usuario> getUsuarios() {
+        return usuarios;
     }
 
-    public ArrayList<Coordenador> getCoordenadores() {
+    public static ArrayList<Administrador> getAdministradores() {
+        return administradores;
+    }
+
+    public static ArrayList<Professor> getProfessores() {
+        return professores;
+    }
+
+    public static ArrayList<Aluno> getAlunos() {
+        return alunos;
+    }
+
+    public static ArrayList<Coordenador> getCoordenadores() {
         return coordenadores;
     }
 
-    public void setCoordenadores(ArrayList<Coordenador> coordenadores) {
-        if (coordenadores != null) {
-            this.coordenadores = coordenadores;
-        }
-    }
-
-    public ArrayList<Diretor> getDiretores() {
+    public static ArrayList<Diretor> getDiretores() {
         return diretores;
     }
 
-    public void setDiretores(ArrayList<Diretor> diretores) {
-        if (diretores != null) {
-            this.diretores = diretores;
-        }
-    }
-
-    public ArrayList<Reserva> getReservas() {
+    public static ArrayList<Reserva> getReservas() {
         return reservas;
     }
 
-    public void setReservas(ArrayList<Reserva> reservas) {
-        if (reservas != null) {
-            this.reservas = reservas;
-        }
-    }
-
-    public ArrayList<Espaco> getEspacos() {
+    public static ArrayList<Espaco> getEspacos() {
         return espacos;
     }
 
-    public void setEspacos(ArrayList<Espaco> espacos) {
-        if (espacos != null) {
-            this.espacos = espacos;
-        }
-    }
-
-    public ArrayList<Equipamento> getEquipamentos() {
+    public static ArrayList<Equipamento> getEquipamentos() {
         return equipamentos;
     }
-
-    public void setEquipamentos(ArrayList<Equipamento> equipamentos) {
-        if (equipamentos != null) {
-            this.equipamentos = equipamentos;
-        }
-    }
-
-    public Professor adicionarProfessor(String nomeCompleto, LocalDate dataNascimento, String cpf,
-                                        String telefone, String email, String formacao,
-                                        String senha) {
-
-        Professor novoProfessor = new Professor();
-
-        novoProfessor.setNomeCompleto(nomeCompleto);
-        novoProfessor.setDataNascimento(dataNascimento);
-        novoProfessor.setCpf(cpf);
-        novoProfessor.setTelefone(telefone);
-        novoProfessor.setEmail(email);
-        novoProfessor.setFormacao(formacao);
-        novoProfessor.setSenha(senha);
-
-        return novoProfessor;
-    }
-
-
-
-
 }

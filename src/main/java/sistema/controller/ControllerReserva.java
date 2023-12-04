@@ -15,21 +15,21 @@ public class ControllerReserva {
 
     public ControllerReserva(Administrador administrador) {
         this.administrador = administrador;
-        this.reservas = administrador.getReservas();
+        this.reservas = Administrador.getReservas();
     }
 
     public void adicionarReserva(int idUsuarioSolicitante, String tipo, LocalDate dataReserva,
                                  LocalDate dataFinal, LocalTime horaReserva, LocalTime horaFinal, int duracao, String finalidade,
                                  String observacao) {
         Reserva reserva = new Reserva(idUsuarioSolicitante, tipo, dataReserva, dataFinal, horaReserva, horaFinal, duracao, finalidade, observacao);
-        administrador.getReservas().add(reserva);
+        Administrador.getReservas().add(reserva);
     }
 
     public void removerReserva(int idReserva) {
         Iterator<Reserva> iterator = reservas.iterator();
         while (iterator.hasNext()) {
             Reserva reserva = iterator.next();
-            if (reserva.getIdReserva() == idReserva) {
+            if (reserva.getId() == idReserva) {
                 iterator.remove();
             }
         }
@@ -37,7 +37,7 @@ public class ControllerReserva {
 
     public boolean solicitarEdicaoReserva(int idReserva) {
         for (Reserva reserva : reservas) {
-            if (reserva.getIdReserva() == idReserva) {
+            if (reserva.getId() == idReserva) {
                 return true;
             }
         }
@@ -48,7 +48,7 @@ public class ControllerReserva {
                               LocalDate dataFinal, LocalTime horaReserva, LocalTime horaFinal, int duracao, String finalidade,
                               String observacao) {
         for (Reserva reserva : reservas) {
-            if (reserva.getIdReserva() == idReserva) {
+            if (reserva.getId() == idReserva) {
                 reserva.setTipo(tipo);
                 reserva.setDataReserva(dataReserva);
                 reserva.setDataFinal(dataFinal);
@@ -68,7 +68,7 @@ public class ControllerReserva {
 
     public Reserva buscarReserva(int idReserva) {
         for (Reserva reserva : reservas) {
-            if (reserva.getIdReserva() == idReserva) {
+            if (reserva.getId() == idReserva) {
                 return reserva;
             }
         }
