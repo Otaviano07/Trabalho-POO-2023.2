@@ -1,6 +1,7 @@
 package main.java.sistema.model;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 
 public class Equipamento extends ItemReservavel {
     private String fabricante;
@@ -9,9 +10,9 @@ public class Equipamento extends ItemReservavel {
 
     public Equipamento() {
         super();
-        this.setFabricante(null);
-        this.setModelo(null);
-        this.setManutencao(false);
+        this.fabricante = null;
+        this.modelo = null;
+        this.manutencao = false;
     }
 
     public Equipamento(String descricao, int quantidade, boolean status, LocalDate dataDisponivel, String observacoes, String fabricante, String modelo, boolean manutencao) {
@@ -50,11 +51,11 @@ public class Equipamento extends ItemReservavel {
     }
 
     public void realizarManutencao() {
-        /* Método para realizar alguma manutenção no equipamento, atualizando o atributo manutenção para true ou false */
+        this.manutencao = true;
     }
 
     public void finalizarManutencao() {
-        /* Método para finalizar alguma manutenção no equipamento, atualizando o atributo manutenção para true ou false */
+        this.manutencao = false;
     }
 
 

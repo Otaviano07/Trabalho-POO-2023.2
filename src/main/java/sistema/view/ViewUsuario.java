@@ -28,7 +28,7 @@ public class ViewUsuario {
         String senha = scanner.nextLine();
 
         Usuario usuarioLogado = controllerUsuario.fazerLogin(email, senha);
-
+        
         if (usuarioLogado != null) {
             exibirMenu(usuarioLogado);
         } else {
