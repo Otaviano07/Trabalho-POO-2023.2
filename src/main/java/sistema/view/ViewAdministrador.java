@@ -23,7 +23,7 @@ public class ViewAdministrador {
             System.out.println("2 - Gerenciar equipamentos");
             System.out.println("3 - Gerenciar reservas");
             System.out.println("4 - Gerenciar usuários");
-            System.out.println("5 - Sair");
+            System.out.println("0 - Voltar");
 
             int escolhaMenuPrincipal = scanner.nextInt();
             scanner.nextLine();
@@ -41,7 +41,7 @@ public class ViewAdministrador {
                 case 4:
                     mostrarMenuUsuarios();
                     break;
-                case 5:
+                case 0:
                     continuarExecucao = false;
                     break;
                 default:
@@ -78,12 +78,27 @@ public class ViewAdministrador {
                     controller.adicionarEspaco(descricao, quantidade, false, LocalDate.of(2024, 9, 16) , observacoes, capacidade, false);
                     break;
                 case 2:
-                    System.out.print("Digite o ID do : ");
-
-                    controller.removerEspaco();
+                    System.out.print("Digite o ID do espaço que deseja remover: ");
+                    int idEspaco = scanner.nextInt();
+                    controller.removerEspaco(idEspaco);
                     break;
                 case 3:
-                    controller.editarEspaco();
+                    System.out.print("Digite o ID do espaço que deseja editar: ");
+                    int obterIdEspaco = scanner.nextInt();
+
+                    if (controller.solicitarEdicaoEspaco(obterIdEspaco)) {
+                        System.out.print("Digite a descrição do espaço: ");
+                        String descricaoEdicao = scanner.nextLine();
+                        System.out.print("Digite a quantidade disponível: ");
+                        int quantidadeEdicao = scanner.nextInt();
+                        System.out.print("Digite alguma observação sobre o espaço: ");
+                        String observacoesEdicao = scanner.nextLine();
+                        System.out.print("Digite a capacidade do espaço: ");
+                        int capacidadeEdicao = scanner.nextInt();
+                        controller.editarEspaco(obterIdEspaco, descricaoEdicao, quantidadeEdicao, false, LocalDate.of(2024, 9, 16) , observacoesEdicao, capacidadeEdicao, false);
+                    } else {
+                        System.out.println("Espaço não encontrado.");
+                    }
                     break;
                 case 4:
                     voltar = true;
@@ -99,7 +114,7 @@ public class ViewAdministrador {
         System.out.println("1 - Adicionar equipamento");
         System.out.println("2 - Remover equipamento");
         System.out.println("3 - Editar equipamento");
-        System.out.println("4 - Voltar");
+        System.out.println("0 - Voltar");
     }
 
     public void mostrarMenuReservas() {
@@ -107,7 +122,7 @@ public class ViewAdministrador {
         System.out.println("1 - Adicionar reserva");
         System.out.println("2 - Remover reserva");
         System.out.println("3 - Editar reserva");
-        System.out.println("4 - Voltar");    }
+        System.out.println("0 - Voltar");    }
 
     public void mostrarMenuUsuarios() {
         System.out.println("Opções para Gerenciar Usuários:");
@@ -116,41 +131,41 @@ public class ViewAdministrador {
         System.out.println("3 - Professores");
         System.out.println("4 - Coordenadores");
         System.out.println("5 - Diretores");
-        System.out.println("6 - Voltar");}
+        System.out.println("0 - Voltar");}
 
     public void mostrarMenuProfessores() {
         System.out.println("Opções para Gerenciar Professores:");
         System.out.println("1 - Adicionar professor");
         System.out.println("2 - Remover professor");
         System.out.println("3 - Editar professor");
-        System.out.println("4 - Voltar");    }
+        System.out.println("0 - Voltar");    }
 
     public void mostrarMenuAdministradores() {
         System.out.println("Opções para Gerenciar Administradores:");
         System.out.println("1 - Adicionar administrador");
         System.out.println("2 - Remover administrador");
         System.out.println("3 - Editar administrador");
-        System.out.println("4 - Voltar");    }
+        System.out.println("0 - Voltar");    }
 
     public void mostrarMenuAlunos() {
         System.out.println("Opções para Gerenciar Alunos:");
         System.out.println("1 - Adicionar aluno");
         System.out.println("2 - Remover aluno");
         System.out.println("3 - Editar aluno");
-        System.out.println("4 - Voltar");    }
+        System.out.println("0 - Voltar");    }
 
     public void mostrarMenuCoordenadores() {
         System.out.println("Opções para Gerenciar Coordenadores:");
         System.out.println("1 - Adicionar coordenador");
         System.out.println("2 - Remover coordenador");
         System.out.println("3 - Editar coordenador");
-        System.out.println("4 - Voltar");    }
+        System.out.println("0 - Voltar");    }
 
     public void mostrarMenuDiretores() {
         System.out.println("Opções para Gerenciar Diretores:");
         System.out.println("1 - Adicionar diretor");
         System.out.println("2 - Remover diretor");
         System.out.println("3 - Editar diretor");
-        System.out.println("4 - Voltar");    }
+        System.out.println("0 - Voltar");    }
 
 }

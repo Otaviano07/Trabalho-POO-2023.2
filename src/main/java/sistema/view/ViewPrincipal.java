@@ -7,9 +7,11 @@ import java.util.Scanner;
 public class ViewPrincipal {
 
     private ControllerPrincipal controllerPrincipal;
+    private ViewAdministrador viewAdministrador;
 
-    public ViewPrincipal(ControllerPrincipal controllerPrincipal) {
+    public ViewPrincipal(ControllerPrincipal controllerPrincipal, ViewAdministrador viewAdministrador) {
         this.controllerPrincipal = controllerPrincipal;
+        this.viewAdministrador = viewAdministrador;
     }
 
     public void exibirMenuPrincipal() {

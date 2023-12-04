@@ -7,15 +7,19 @@ import main.java.sistema.model.Professor;
 import main.java.sistema.model.Aluno;
 import main.java.sistema.model.Diretor;
 import main.java.sistema.model.Coordenador;
+import main.java.sistema.controller.ControllerAdministrador;
 
 import java.util.Scanner;
 
 public class ViewUsuario {
 
     private ControllerUsuario controllerUsuario;
+    private Administrador administrador;
 
-    public ViewUsuario(ControllerUsuario controllerUsuario) {
+    public ViewUsuario(ControllerUsuario controllerUsuario, Administrador administrador) {
         this.controllerUsuario = controllerUsuario;
+        this.administrador = administrador;
+
     }
 
     public void fazerLogin() {
@@ -51,9 +55,13 @@ public class ViewUsuario {
     }
 
     private void abrirMenuAdministrador() {
-        ViewAdministrador viewAdministrador = new ViewAdministrador();
+        Scanner scanner = new Scanner(System.in);
+        ControllerAdministrador controllerAdministrador = new ControllerAdministrador(administrador);
+
+        ViewAdministrador viewAdministrador = new ViewAdministrador(controllerAdministrador, scanner);
         viewAdministrador.mostrarMenuAdministrador();
     }
+
 
     private void abrirMenuProfessor() {
         ViewProfessor viewProfessor = new ViewProfessor();
