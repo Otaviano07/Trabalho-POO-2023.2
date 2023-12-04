@@ -72,4 +72,8 @@ public class Administrador extends Usuario {
     public static ArrayList<Equipamento> getEquipamentos() {
         return equipamentos;
     }
+
+    public static void adicionarUsuario(Usuario usuario) {
+        usuarios.add(usuario);
+    }
 }
